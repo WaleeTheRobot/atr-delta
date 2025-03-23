@@ -43,10 +43,12 @@ namespace NinjaTrader.NinjaScript.Indicators
 
         [NinjaScriptProperty]
         [Display(Name = "Custom Positive Color", GroupName = GROUP_NAME_ATR_DELTA, Order = 3)]
+        [XmlIgnore]
         public Brush CustomPositiveColor { get; set; }
 
         [NinjaScriptProperty]
         [Display(Name = "Custom Negative Color", GroupName = GROUP_NAME_ATR_DELTA, Order = 4)]
+        [XmlIgnore]
         public Brush CustomNegativeColor { get; set; }
 
         #endregion
@@ -117,55 +119,55 @@ namespace NinjaTrader.NinjaScript.Indicators
 
 namespace NinjaTrader.NinjaScript.Indicators
 {
-	public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
-	{
-		private ATRDelta[] cacheATRDelta;
-		public ATRDelta ATRDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return ATRDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
+    public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
+    {
+        private ATRDelta[] cacheATRDelta;
+        public ATRDelta ATRDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return ATRDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
 
-		public ATRDelta ATRDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			if (cacheATRDelta != null)
-				for (int idx = 0; idx < cacheATRDelta.Length; idx++)
-					if (cacheATRDelta[idx] != null && cacheATRDelta[idx].FastPeriod == fastPeriod && cacheATRDelta[idx].Period == period && cacheATRDelta[idx].OverridePlotColors == overridePlotColors && cacheATRDelta[idx].CustomPositiveColor == customPositiveColor && cacheATRDelta[idx].CustomNegativeColor == customNegativeColor && cacheATRDelta[idx].EqualsInput(input))
-						return cacheATRDelta[idx];
-			return CacheIndicator<ATRDelta>(new ATRDelta(){ FastPeriod = fastPeriod, Period = period, OverridePlotColors = overridePlotColors, CustomPositiveColor = customPositiveColor, CustomNegativeColor = customNegativeColor }, input, ref cacheATRDelta);
-		}
-	}
+        public ATRDelta ATRDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            if (cacheATRDelta != null)
+                for (int idx = 0; idx < cacheATRDelta.Length; idx++)
+                    if (cacheATRDelta[idx] != null && cacheATRDelta[idx].FastPeriod == fastPeriod && cacheATRDelta[idx].Period == period && cacheATRDelta[idx].OverridePlotColors == overridePlotColors && cacheATRDelta[idx].CustomPositiveColor == customPositiveColor && cacheATRDelta[idx].CustomNegativeColor == customNegativeColor && cacheATRDelta[idx].EqualsInput(input))
+                        return cacheATRDelta[idx];
+            return CacheIndicator<ATRDelta>(new ATRDelta() { FastPeriod = fastPeriod, Period = period, OverridePlotColors = overridePlotColors, CustomPositiveColor = customPositiveColor, CustomNegativeColor = customNegativeColor }, input, ref cacheATRDelta);
+        }
+    }
 }
 
 namespace NinjaTrader.NinjaScript.MarketAnalyzerColumns
 {
-	public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
-	{
-		public Indicators.ATRDelta ATRDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.ATRDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
+    public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
+    {
+        public Indicators.ATRDelta ATRDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.ATRDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
 
-		public Indicators.ATRDelta ATRDelta(ISeries<double> input , int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.ATRDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
-	}
+        public Indicators.ATRDelta ATRDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.ATRDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
+    }
 }
 
 namespace NinjaTrader.NinjaScript.Strategies
 {
-	public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
-	{
-		public Indicators.ATRDelta ATRDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.ATRDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
+    public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
+    {
+        public Indicators.ATRDelta ATRDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.ATRDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
 
-		public Indicators.ATRDelta ATRDelta(ISeries<double> input , int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.ATRDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
-	}
+        public Indicators.ATRDelta ATRDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.ATRDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
+    }
 }
 
 #endregion
